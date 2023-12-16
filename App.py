@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import shap
+import matplotlib.pyplot as plt
 
 # Load data
 shap_values = pd.read_csv("shap_values.csv")
