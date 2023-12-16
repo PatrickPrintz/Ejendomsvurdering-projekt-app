@@ -3,6 +3,8 @@ import pandas as pd
 import shap
 import matplotlib.pyplot as plt
 
+st.set_option('deprecation.showPyplotGlobalUse', False)
+
 # Load data
 shap_values = pd.read_csv("shap_values.csv")
 shap_values = shap_values.to_numpy()
