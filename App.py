@@ -10,20 +10,21 @@ shap_values = pd.read_csv("shap_values.csv")
 shap_values = shap_values.to_numpy()
 X_test_shh = pd.read_csv("X_test.csv")
 explainer_expected_value = 2678679.5
-shap_values.shape
+
 # Streamlit app
 st.title('SHAP Waterfall Plot App')
-
+max_value=len(shap_values)
 # Number input for 'nummer'
-nummer = st.number_input('Enter a number:', min_value=0, max_value=len(shap_values)-1, value=0, step=1)
+nummer = st.number_input('Vælg et tilfældigt nummer mellem 0 og 19.570:', min_value=0, max_value=len(shap_values)-1, value=0, step=1)
 
 # Button to generate and show the plot
-if st.button('Generate Waterfall Plot'):
+if st.button('Generer forklarings plot af vurdering'):
     # SHAP-waterfall plot
     plt.figure(figsize=(5, 5))  
     fig = shap.plots.waterfall(shap.Explanation(values=shap_values[nummer],
                                      base_values=explainer_expected_value,
-                                     data=X_test_shh.iloc[nummer]))
+                                     data=X_test_shh.iloc[nummer]),
+                                     max_display=25)
     st.pyplot(fig)
 
 
