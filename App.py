@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 
 # Load data
 shap_values = pd.read_csv("shap_values.csv")
+shap_values = shap_values.to_numpy()
 X_test_shh = pd.read_csv("X_test.csv")
 explainer_expected_value = 2678679.5
 shap_values.shape
