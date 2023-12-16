@@ -3,8 +3,8 @@ import pandas as pd
 import shap
 
 # Load data
-shap_values = pd.read_csv("App/shap_values.csv")
-X_test_shh = pd.read_csv("App/X_test.csv")
+shap_values = pd.read_csv("shap_values.csv")
+X_test_shh = pd.read_csv("X_test.csv")
 explainer_expected_value = 2678679.5
 
 # Streamlit app
