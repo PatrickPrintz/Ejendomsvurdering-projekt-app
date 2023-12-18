@@ -8,7 +8,7 @@ import os
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
-# Load data
+
 shap_values = pd.read_csv("shap_values.csv")
 shap_values = shap_values.to_numpy()
 X_test_shh = pd.read_csv("X_test.csv")
@@ -16,16 +16,13 @@ X_test_df = pd.read_csv("X_test_df.csv")
 
 @st.cache_data
 def load_data():
-    # Check if preprocessed data is cached locally
+    
     if os.path.exists("preprocessed_data.pkl"):
         return joblib.load("preprocessed_data.pkl")
     
-    # Otherwise, load and preprocess the data
+    
     X_train_df = pd.read_csv("X_train.csv")
-    # Perform preprocessing steps
-    # ...
 
-    # Cache the preprocessed data locally
     joblib.dump(X_train_df, "preprocessed_data.pkl")
     return X_train_df
 
@@ -51,12 +48,12 @@ st.write("Det tager lidt tid at loade data hver gang, pga. størrelsen af data o
 columns_to_plot = ['None', 'varmesinstallation', 'vægmateriale', 'tagkode', 'Energylabel', 'price',
        'build_year', 'Region', 'grund_str']
 
-# Dropdown menu for selecting a column
+
 selected_column = st.selectbox("Select a column:", columns_to_plot)
 
-# Plotting logic based on the selected column
+
 if selected_column in ['price', 'build_year', 'grund_str']:
-    # Histogram for numeric columns
+    
     plt.figure(figsize=(8, 6))
     sns.histplot(X_train_df[selected_column], kde=True)
     plt.title(f'Fordeling af {selected_column}')
@@ -95,7 +92,7 @@ Denne sektion vil give et indblik i de enkelte vurderinger af rækkehuse. Vælg 
 """)
 nummer = st.number_input('Vælg et tilfældigt nummer mellem 0 og 19.570:', min_value=0, max_value=len(shap_values)-1, value=0, step=1)
 
-# Button to generate and show the plot
+
 if st.button('Generer forklarings plot af vurdering'):
     if X_test_df.iloc[nummer]['ombygaar'] == 0:
         ombyg = "der er ikke registreret nogen ombygninger"
@@ -117,7 +114,7 @@ if st.button('Generer forklarings plot af vurdering'):
             Nedenfor fremgår en forklaring på modellens vurdering af boligen.
             """)
     st.write(f"Af Nedenstående figure, fremgår gennemsnitsprisen E(f(x)) = {explainer_expected_value} kr. for alle boliger i test sættet. Hertil fremgår der tillæg eller fradrag for de forskellige features, som er med til at påvirke prisen på boligen.")
-    # SHAP-waterfall plot
+    
     plt.figure(figsize=(5, 5))  
     fig = shap.plots.waterfall(shap.Explanation(values=shap_values[nummer],
                                      base_values=explainer_expected_value,
