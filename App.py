@@ -33,24 +33,13 @@ if st.button('Generer forklarings plot af vurdering'):
             Boligen består af i alt {X_test_df.iloc[nummer]['badtoi']} badeværelser og toiletter og {X_test_df.iloc[nummer]['rooms']} værelser.
             Boligen er opført i {X_test_df.iloc[nummer]['build_year']} og {ombyg}. Boligens primær varmekilde er {X_test_df.iloc[nummer]['varmesinstallation']} og har en energimærkning på {X_test_df.iloc[nummer]['Energylabel']}.
             Boligens ydervæg er lavet af {X_test_df.iloc[nummer]['vægmateriale']} og taget består af {X_test_df.iloc[nummer]['tagkode']}.
-            
-
             Boligen er placeret {X_test_df.iloc[nummer]['dist_coast']} km. fra kysten, {X_test_df.iloc[nummer]['dist_highway']} km. fra nærmeste motorvej, 
             {X_test_df.iloc[nummer]['dist_railroads']} km. fra nærmeste jernbane, {X_test_df.iloc[nummer]['dist_airports']} km. fra nærmeste lufthavn.
-
             Nærmeste skole er {X_test_df.iloc[nummer]['dist_school']} km. væk, nærmeste universitet er {X_test_df.iloc[nummer]['dist_uni']} km. væk og nærmeste insitution eller børnehave er {X_test_df.iloc[nummer]['dist_kindergarden']} km. væk.
-
             Boligen er ligeledes placeret tæt på naturen, hvor der er {X_test_df.iloc[nummer]['dist_forests']} km. til nærmeste skov og {X_test_df.iloc[nummer]['dist_waterlines']} km. til nærmeste sø eller å.
-
             Naboområdets pris ligger på omstrent {X_test_df.iloc[nummer]['weighted_price'].round(0)} kr. vægtet efter afstanden til boligen.
-
             Boliger er placeret ved {X_test_df.iloc[nummer]['longitude']} længdegrad og {X_test_df.iloc[nummer]['latitude']} breddegrad.
-
-            
             Nedenfor fremgår en forklaring på modellets vurdering af boligen.
-
-
-
             """)
     # SHAP-waterfall plot
     plt.figure(figsize=(5, 5))  
