@@ -30,7 +30,8 @@ st.write("Denne app har til formål illustrativt at vise hvordan en offentlig hj
 st.write("Formålet er at kunne give en letforståelig måde at forstå enkelte vurderinger.")
 
 st.subheader("Dette er modellen til vurderingerne trænet på")
-st.write("I denne sektio vil der være en række af plots, som beskriver det data, som modellen er trænet på.")
+st.write("I denne sektion vil der være en række af plots, som beskriver det data, som modellen er trænet på.")
+st.write("Det tager lidt tid at loade data hver gang, pga. størrelsen af data og computerens ydeevne.")
 
 columns_to_plot = ['None', 'varmesinstallation', 'vægmateriale', 'tagkode', 'Energylabel', 'price',
        'build_year', 'Region', 'grund_str']
@@ -72,6 +73,11 @@ elif selected_column in ['varmesinstallation', 'vægmateriale', 'tagkode', 'Ener
 
 
 st.subheader("Dette er modellen til vurderingerne trænet på")
+st.write("""
+Denne sektion vil give et indblik i de enkelte vurderinger af rækkehuse. Vælg et tilfældigt nummer i nedenstående slider,
+         Og tryk for knappen for at generere et forklarings plot af vurderingen. Bemærk at grundet OneHotEncoding er der mangle features i figuren.
+         Ligeledes vil der af de værdier som fremgår af plottet være benyttet skaleringsmetoder. Læs derfor i stedet teksten for rigtig fakta om enkelte bolig.
+""")
 nummer = st.number_input('Vælg et tilfældigt nummer mellem 0 og 19.570:', min_value=0, max_value=len(shap_values)-1, value=0, step=1)
 
 # Button to generate and show the plot
