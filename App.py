@@ -41,7 +41,7 @@ if st.button('Generer forklarings plot af vurdering'):
             Boliger er placeret ved {X_test_df.iloc[nummer]['longitude']} længdegrad og {X_test_df.iloc[nummer]['latitude']} breddegrad.
             Nedenfor fremgår en forklaring på modellens vurdering af boligen.
             """)
-    st.write(f"Af Nedenstående figure, fremgår gennemsnitsprisen E(f(x)) = {explainer_expected_value.round(0)} kr. for alle boliger i test sættet. Hertil fremgår der tillæg eller fradrag for de forskellige features, som er med til at påvirke prisen på boligen.")
+    st.write(f"Af Nedenstående figure, fremgår gennemsnitsprisen E(f(x)) = {explainer_expected_value} kr. for alle boliger i test sættet. Hertil fremgår der tillæg eller fradrag for de forskellige features, som er med til at påvirke prisen på boligen.")
     # SHAP-waterfall plot
     plt.figure(figsize=(5, 5))  
     fig = shap.plots.waterfall(shap.Explanation(values=shap_values[nummer],
