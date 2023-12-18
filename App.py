@@ -15,9 +15,13 @@ X_test_df['Energylabel'] = X_test_df['Energylabel'].map(energylabel_reversed_map
 explainer_expected_value = 2678679.5
 
 # Streamlit app
-st.title('SHAP Waterfall Plot App')
-max_value=len(shap_values)
-# Number input for 'nummer'
+st.title('Forklaring af individuelle vurderinger')
+st.write("Denne app har til formål illustrativt at vise hvordan en offentlig hjemmeside, kan opbygges, til at forklare individuelle vurderinger.")
+
+st.write("Formålet er at kunne give en letforståelig måde at forstå enkelte vurderinger.")
+
+st.subheader("Dette er modellen til vurderingerne trænet på")
+st.write("Hejsa")
 nummer = st.number_input('Vælg et tilfældigt nummer mellem 0 og 19.570:', min_value=0, max_value=len(shap_values)-1, value=0, step=1)
 
 # Button to generate and show the plot
