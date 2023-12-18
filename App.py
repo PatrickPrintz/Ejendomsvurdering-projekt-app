@@ -26,18 +26,14 @@ st.write("Formålet er at kunne give en letforståelig måde at forstå enkelte 
 st.subheader("Dette er modellen til vurderingerne trænet på")
 st.write("I denne sektio vil der være en række af plots, som beskriver det data, som modellen er trænet på.")
 
-columns_to_plot = ['None','rooms', 'build_year', 'area', 'Region', 'Byzone', 'dist_coast',
-                   'dist_highway', 'dist_railroads', 'dist_airports', 'longitude',
-                   'latitude', 'grund_str', 'anvendelse', 'varmesinstallation',
-                   'interest_30_maturity', 'price', 'dist_uni', 'tagkode', 'vægmateriale',
-                   'ombygaar', 'Energylabel', 'dist_school', 'dist_kindergarden',
-                   'dist_waterlines', 'dist_forests', 'weighted_price', 'badtoi']
+columns_to_plot = ['None', 'varmesinstallation', 'vægmateriale', 'tagkode', 'Energylabel', 'price',
+       'build_year', 'Region', 'grund_str']
 
 # Dropdown menu for selecting a column
 selected_column = st.selectbox("Select a column:", columns_to_plot)
 
 # Plotting logic based on the selected column
-if selected_column in ['area', 'price', 'weighted_price']:
+if selected_column in ['price', 'build_year', 'grund_str']:
     # Histogram for numeric columns
     plt.figure(figsize=(8, 6))
     sns.histplot(X_train_df[selected_column], kde=True)
@@ -47,18 +43,9 @@ if selected_column in ['area', 'price', 'weighted_price']:
     st.pyplot()
     
 elif selected_column == 'None':
-    None
+    st.write("Vælg en feature fra dropdown menuen for at se data.")
 
-elif selected_column in ['build_year']:
-    # Countplot for categorical columns with limited unique values
-    plt.figure(figsize=(10, 6))
-    sns.countplot(X_train_df[selected_column])
-    plt.title(f'Count of properties by {selected_column}')
-    plt.xlabel(selected_column)
-    plt.ylabel('Antal')
-    st.pyplot()
-
-elif selected_column in ['rooms', 'badtoi', 'varmesinstallation', 'vægmateriale', 'tagkode', 'Energylabel']:
+elif selected_column in ['varmesinstallation', 'vægmateriale', 'tagkode', 'Energylabel','Region']:
     plt.figure(figsize=(8, 6))
     sns.countplot(X_train_df[selected_column])
     plt.title(f'Fordeling af {selected_column}')
@@ -66,15 +53,6 @@ elif selected_column in ['rooms', 'badtoi', 'varmesinstallation', 'vægmateriale
     plt.ylabel('Antal')
     st.pyplot()
 
-else:
-    # Barplot for other categorical columns
-    plt.figure(figsize=(12, 8))
-    sns.countplot(X_train_df[selected_column], order=X_train_df[selected_column].value_counts().index)
-    plt.title(f'Antal af {selected_column}')
-    plt.xlabel(selected_column)
-    plt.ylabel('Antal')
-    plt.xticks(rotation=45, ha='right')
-    st.pyplot()
 
 
 
