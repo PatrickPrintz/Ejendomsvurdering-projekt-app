@@ -47,7 +47,7 @@ if st.button('Generer forklarings plot af vurdering'):
     fig = shap.plots.waterfall(shap.Explanation(values=shap_values[nummer],
                                      base_values=explainer_expected_value,
                                      data=X_test_shh.iloc[nummer]),
-                                     max_display=25)
+                                     max_display=10)
     st.pyplot(fig)
 
     st.write(f"""
