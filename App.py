@@ -29,6 +29,8 @@ def load_data():
     joblib.dump(X_train_df, "preprocessed_data.pkl")
     return X_train_df
 
+X_train_df = load_data()
+
 
 
 
