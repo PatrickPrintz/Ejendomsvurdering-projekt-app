@@ -20,8 +20,9 @@ nummer = st.number_input('Vælg et tilfældigt nummer mellem 0 og 19.570:', min_
 
 # Button to generate and show the plot
 if st.button('Generer forklarings plot af vurdering'):
-    st.text("""
+    st.text(f"""
     Forklaringen af vurderingen er baseret på en SHAP-waterfall plot.
+            Den indtastede bolig er et {X_test_df.iloc[nummer]['anvendelse']} på {X_test_df.iloc[nummer]['area']} m2, placeret i {X_test_df.iloc[nummer]['Region']}.
             HELLO!!!!
             """)
     # SHAP-waterfall plot
