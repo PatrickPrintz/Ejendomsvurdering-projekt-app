@@ -38,7 +38,7 @@ selected_column = st.selectbox("Select a column:", columns_to_plot)
 if selected_column in ['rooms', 'area', 'price', 'badtoi']:
     # Histogram for numeric columns
     plt.figure(figsize=(8, 6))
-    sns.histplot(data[selected_column], kde=True)
+    sns.histplot(X_train_df[selected_column], kde=True)
     plt.title(f'Distribution of {selected_column}')
     plt.xlabel(selected_column)
     plt.ylabel('Frequency')
@@ -47,7 +47,7 @@ if selected_column in ['rooms', 'area', 'price', 'badtoi']:
 elif selected_column in ['build_year']:
     # Countplot for categorical columns with limited unique values
     plt.figure(figsize=(10, 6))
-    sns.countplot(data[selected_column])
+    sns.countplot(X_train_df[selected_column])
     plt.title(f'Count of properties by {selected_column}')
     plt.xlabel(selected_column)
     plt.ylabel('Count')
@@ -56,7 +56,7 @@ elif selected_column in ['build_year']:
 else:
     # Barplot for other categorical columns
     plt.figure(figsize=(12, 8))
-    sns.countplot(data[selected_column], order=data[selected_column].value_counts().index)
+    sns.countplot(X_train_df[selected_column], order=X_train_df[selected_column].value_counts().index)
     plt.title(f'Count of properties by {selected_column}')
     plt.xlabel(selected_column)
     plt.ylabel('Count')
