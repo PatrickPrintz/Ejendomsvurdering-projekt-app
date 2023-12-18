@@ -3,6 +3,9 @@ import pandas as pd
 import shap
 import matplotlib.pyplot as plt
 import seaborn as sns
+import joblib
+import os
+
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
 # Load data
@@ -13,10 +16,20 @@ X_test_df = pd.read_csv("X_test_df.csv")
 
 @st.cache_data
 def load_data():
+    # Check if preprocessed data is cached locally
+    if os.path.exists("preprocessed_data.pkl"):
+        return joblib.load("preprocessed_data.pkl")
+    
+    # Otherwise, load and preprocess the data
     X_train_df = pd.read_csv("X_train.csv")
+    # Perform preprocessing steps
+    # ...
+
+    # Cache the preprocessed data locally
+    joblib.dump(X_train_df, "preprocessed_data.pkl")
     return X_train_df
 
-X_train_df = load_data()
+
 
 
 energylabel_reversed_map = {7: 'A', 6: 'B', 5: 'C', 4: 'D', 3: 'E', 2: 'F', 1: 'G'}
