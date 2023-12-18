@@ -38,9 +38,10 @@ if st.button('Generer forklarings plot af vurdering'):
             Nærmeste skole er {X_test_df.iloc[nummer]['dist_school'].round(2)} km. væk, nærmeste universitet er {X_test_df.iloc[nummer]['dist_uni'].round(2)} km. væk og nærmeste insitution eller børnehave er {X_test_df.iloc[nummer]['dist_kindergarden'].round(2)} km. væk.
             Boligen er ligeledes placeret tæt på naturen, hvor der er {X_test_df.iloc[nummer]['dist_forests'].round(2)} km. til nærmeste skov og {X_test_df.iloc[nummer]['dist_waterlines'].round(2)} km. til nærmeste sø eller å.
             Naboområdets pris ligger på omstrent {X_test_df.iloc[nummer]['weighted_price'].round(0)} kr. vægtet efter afstanden til boligen.
-            Boliger er placeret ved {X_test_df.iloc[nummer]['longitude']} længdegrad og {X_test_df.iloc[nummer]['latitude']} breddegrad. <br><br>
+            Boliger er placeret ved {X_test_df.iloc[nummer]['longitude']} længdegrad og {X_test_df.iloc[nummer]['latitude']} breddegrad.
             Nedenfor fremgår en forklaring på modellens vurdering af boligen.
             """)
+    st.write(f"Af Nedenstående figure, fremgår gennemsnitsprisen E(f(x)) = {explainer_expected_value.round(0)} kr. for alle boliger i test sættet. Hertil fremgår der tillæg eller fradrag for de forskellige features, som er med til at påvirke prisen på boligen.")
     # SHAP-waterfall plot
     plt.figure(figsize=(5, 5))  
     fig = shap.plots.waterfall(shap.Explanation(values=shap_values[nummer],
@@ -48,5 +49,8 @@ if st.button('Generer forklarings plot af vurdering'):
                                      data=X_test_shh.iloc[nummer]),
                                      max_display=25)
     st.pyplot(fig)
+
+    st.write(f"""
+    Boligen er oprindeligt solgt for {X_test_df.iloc[nummer]['price'].round()} kr. ved sidste salg.""")
 
 
