@@ -10,7 +10,13 @@ shap_values = pd.read_csv("shap_values.csv")
 shap_values = shap_values.to_numpy()
 X_test_shh = pd.read_csv("X_test.csv")
 X_test_df = pd.read_csv("X_test_df.csv")
-X_train_df = pd.read_csv("X_train.csv")
+@st.cache
+def load_data():
+
+    return pd.read_csv("X_train.csv")
+
+X_train_df = load_data()
+
 energylabel_reversed_map = {7: 'A', 6: 'B', 5: 'C', 4: 'D', 3: 'E', 2: 'F', 1: 'G'}
 X_test_df['Energylabel'] = X_test_df['Energylabel'].map(energylabel_reversed_map)
 explainer_expected_value = 2678679.5
