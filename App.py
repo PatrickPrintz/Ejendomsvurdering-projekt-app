@@ -38,9 +38,9 @@ if st.button('Generer forklarings plot af vurdering'):
             Boligen er placeret {X_test_df.iloc[nummer]['dist_coast']} km. fra kysten, {X_test_df.iloc[nummer]['dist_highway']} km. fra nærmeste motorvej, 
             {X_test_df.iloc[nummer]['dist_railroads']} km. fra nærmeste jernbane, {X_test_df.iloc[nummer]['dist_airports']} km. fra nærmeste lufthavn.
 
-            Nærmeste skole er {X_test_df.iloc[nummer]['dist_school']} km. væk, nærmeste universitet er {X_test_df.iloc[nummer]['dist_university']} km. væk og nærmeste insitution eller børnehave er {X_test_df.iloc[nummer]['dist_kindergarten']} km. væk.
+            Nærmeste skole er {X_test_df.iloc[nummer]['dist_school']} km. væk, nærmeste universitet er {X_test_df.iloc[nummer]['dist_uni']} km. væk og nærmeste insitution eller børnehave er {X_test_df.iloc[nummer]['dist_kindergarden']} km. væk.
 
-            Boligen er ligeledes placeret tæt på naturen, hvor der er {X_test_df.iloc[nummer]['dist_forests']} km. til nærmeste skov og {X_test_df.iloc[nummer]['waterlines']} km. til nærmeste sø eller å.
+            Boligen er ligeledes placeret tæt på naturen, hvor der er {X_test_df.iloc[nummer]['dist_forests']} km. til nærmeste skov og {X_test_df.iloc[nummer]['dist_waterlines']} km. til nærmeste sø eller å.
 
             Naboområdets pris ligger på omstrent {X_test_df.iloc[nummer]['weighted_price'].round(0)} kr. vægtet efter afstanden til boligen.
 
