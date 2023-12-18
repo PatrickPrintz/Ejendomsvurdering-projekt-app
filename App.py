@@ -35,7 +35,7 @@ if st.button('Generer forklarings plot af vurdering'):
             Boligens ydervæg er lavet af {X_test_df.iloc[nummer]['vægmateriale']} og taget består af {X_test_df.iloc[nummer]['tagkode']}.
             
 
-            Boligen er placeret {X_test_df.iloc['nummer']['dist_coast']} km. fra kysten, {X_test_df.iloc[nummer]['dist_highway']} km. fra nærmeste motorvej, 
+            Boligen er placeret {X_test_df.iloc[nummer]['dist_coast']} km. fra kysten, {X_test_df.iloc[nummer]['dist_highway']} km. fra nærmeste motorvej, 
             {X_test_df.iloc[nummer]['dist_railroads']} km. fra nærmeste jernbane, {X_test_df.iloc[nummer]['dist_airports']} km. fra nærmeste lufthavn.
 
             Nærmeste skole er {X_test_df.iloc[nummer]['dist_school']} km. væk, nærmeste universitet er {X_test_df.iloc[nummer]['dist_university']} km. væk og nærmeste insitution eller børnehave er {X_test_df.iloc[nummer]['dist_kindergarten']} km. væk.
