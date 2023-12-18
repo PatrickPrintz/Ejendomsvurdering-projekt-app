@@ -54,6 +54,6 @@ if st.button('Generer forklarings plot af vurdering'):
     Boligen er oprindeligt solgt for {X_test_df.iloc[nummer]['price'].round()} kr. ved sidste salg.""")
     vurdering = explainer_expected_value + shap_values[nummer].sum()
     st.write(f"Modellens endelige vurdering lyder på: {vurdering.round()} kr.")
-    st.write(f"Modellens vurdering afviger derfor med {(vurdering.round() - X_test_df.iloc[nummer]['price'].round())/X_test_df.iloc[nummer]['price'].round() *100} pct. fra den sidste salgspris.")
+    st.write(f"Modellens vurdering afviger derfor med {((vurdering.round() - X_test_df.iloc[nummer]['price'].round())/X_test_df.iloc[nummer]['price'].round() *100).round()} pct. fra den sidste salgspris.")
 
 
