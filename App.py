@@ -11,7 +11,7 @@ shap_values = shap_values.to_numpy()
 X_test_shh = pd.read_csv("X_test.csv")
 X_test_df = pd.read_csv("X_test_df.csv")
 
-@st.experimental_memo
+@st.cache_data
 def load_data(url):
     X_train_df = pd.read_csv(url)
     return X_train_df
