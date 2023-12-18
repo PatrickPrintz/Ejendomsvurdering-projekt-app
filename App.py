@@ -32,7 +32,7 @@ st.write("Formålet er at kunne give en letforståelig måde at forstå enkelte 
 st.subheader("Dette er modellen til vurderingerne trænet på")
 st.write("I denne sektio vil der være en række af plots, som beskriver det data, som modellen er trænet på.")
 
-columns_to_plot = ['rooms', 'build_year', 'area', 'Region', 'Byzone', 'dist_coast',
+columns_to_plot = ['None','rooms', 'build_year', 'area', 'Region', 'Byzone', 'dist_coast',
                    'dist_highway', 'dist_railroads', 'dist_airports', 'longitude',
                    'latitude', 'grund_str', 'anvendelse', 'varmesinstallation',
                    'interest_30_maturity', 'price', 'dist_uni', 'tagkode', 'vægmateriale',
@@ -51,6 +51,9 @@ if selected_column in ['area', 'price', 'weighted_price']:
     plt.xlabel(selected_column)
     plt.ylabel('Frekvens')
     st.pyplot()
+    
+elif selected_column == 'None':
+    None
 
 elif selected_column in ['build_year']:
     # Countplot for categorical columns with limited unique values
