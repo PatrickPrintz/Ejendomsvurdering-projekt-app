@@ -10,7 +10,7 @@ shap_values = pd.read_csv("shap_values.csv")
 shap_values = shap_values.to_numpy()
 X_test_shh = pd.read_csv("X_test.csv")
 X_test_df = pd.read_csv("X_test_df.csv")
-X_train = pd.read_csv("X_train.csv")
+X_train_df = pd.read_csv("X_train.csv")
 energylabel_reversed_map = {7: 'A', 6: 'B', 5: 'C', 4: 'D', 3: 'E', 2: 'F', 1: 'G'}
 X_test_df['Energylabel'] = X_test_df['Energylabel'].map(energylabel_reversed_map)
 explainer_expected_value = 2678679.5
@@ -24,7 +24,57 @@ st.write("Formålet er at kunne give en letforståelig måde at forstå enkelte 
 st.subheader("Dette er modellen til vurderingerne trænet på")
 st.write("I denne sektio vil der være en række af plots, som beskriver det data, som modellen er trænet på.")
 
+columns_to_plot = ['rooms', 'build_year', 'area', 'Region', 'Byzone', 'dist_coast',
+                   'dist_highway', 'dist_railroads', 'dist_airports', 'longitude',
+                   'latitude', 'grund_str', 'anvendelse', 'varmesinstallation',
+                   'interest_30_maturity', 'price', 'dist_uni', 'tagkode', 'vægmateriale',
+                   'ombygaar', 'Energylabel', 'dist_school', 'dist_kindergarden',
+                   'dist_waterlines', 'dist_forests', 'weighted_price', 'badtoi']
 
+# Dropdown menu for selecting a column
+selected_column = st.selectbox("Select a column:", columns_to_plot)
+
+# Plotting logic based on the selected column
+if selected_column in ['rooms', 'area', 'price', 'badtoi']:
+    # Histogram for numeric columns
+    plt.figure(figsize=(8, 6))
+    sns.histplot(data[selected_column], kde=True)
+    plt.title(f'Distribution of {selected_column}')
+    plt.xlabel(selected_column)
+    plt.ylabel('Frequency')
+    st.pyplot()
+
+elif selected_column in ['build_year']:
+    # Countplot for categorical columns with limited unique values
+    plt.figure(figsize=(10, 6))
+    sns.countplot(data[selected_column])
+    plt.title(f'Count of properties by {selected_column}')
+    plt.xlabel(selected_column)
+    plt.ylabel('Count')
+    st.pyplot()
+
+else:
+    # Barplot for other categorical columns
+    plt.figure(figsize=(12, 8))
+    sns.countplot(data[selected_column], order=data[selected_column].value_counts().index)
+    plt.title(f'Count of properties by {selected_column}')
+    plt.xlabel(selected_column)
+    plt.ylabel('Count')
+    plt.xticks(rotation=45, ha='right')
+    st.pyplot()
+
+
+
+
+
+
+
+
+
+
+
+
+st.subheader("Dette er modellen til vurderingerne trænet på")
 nummer = st.number_input('Vælg et tilfældigt nummer mellem 0 og 19.570:', min_value=0, max_value=len(shap_values)-1, value=0, step=1)
 
 # Button to generate and show the plot
