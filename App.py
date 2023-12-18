@@ -13,8 +13,8 @@ X_test_df = pd.read_csv("X_test_df.csv")
 
 @st.cache_data
 def load_data(url):
-    df = pd.read_csv(url)
-    return df
+    X_train_df = pd.read_csv(url)
+    return X_train_df
 
 X_train_df = load_data("X_train.csv")
 
