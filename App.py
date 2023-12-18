@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import shap
 import matplotlib.pyplot as plt
-
+import seaborn as sns
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
 # Load data
