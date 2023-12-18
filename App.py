@@ -22,6 +22,7 @@ nummer = st.number_input('Vælg et tilfældigt nummer mellem 0 og 19.570:', min_
 if st.button('Generer forklarings plot af vurdering'):
     st.text("""
     Forklaringen af vurderingen er baseret på en SHAP-waterfall plot.
+            HELLO!!!!
             """)
     # SHAP-waterfall plot
     plt.figure(figsize=(5, 5))  
