@@ -25,7 +25,7 @@ if st.button('Generer forklarings plot af vurdering'):
     else:
         ombyg = f"der er registreret en ombygning i år {X_test_df.iloc[nummer]['ombygaar']}"
 
-    st.text(f"""
+    st.write(f"""
     Forklaringen af vurderingen er baseret på en SHAP-waterfall plot.
             Den indtastede bolig er et {X_test_df.iloc[nummer]['anvendelse']} på {X_test_df.iloc[nummer]['area']} m2, placeret i {X_test_df.iloc[nummer]['Region']}.
             Boligen er opført i {X_test_df.iloc[nummer]['build_year']} og {ombyg}. Boligens primær varmekilde er {X_test_df.iloc[nummer]['varmesinstallation']} og har en energimærkning på {X_test_df.iloc[nummer]['Energylabel']}.
