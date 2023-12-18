@@ -18,6 +18,7 @@ def load_data(url):
 
 X_train_df = load_data("X_train.csv")
 
+
 energylabel_reversed_map = {7: 'A', 6: 'B', 5: 'C', 4: 'D', 3: 'E', 2: 'F', 1: 'G'}
 X_test_df['Energylabel'] = X_test_df['Energylabel'].map(energylabel_reversed_map)
 explainer_expected_value = 2678679.5
