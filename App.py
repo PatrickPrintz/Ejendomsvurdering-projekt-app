@@ -35,13 +35,13 @@ columns_to_plot = ['rooms', 'build_year', 'area', 'Region', 'Byzone', 'dist_coas
 selected_column = st.selectbox("Select a column:", columns_to_plot)
 
 # Plotting logic based on the selected column
-if selected_column in ['rooms', 'area', 'price', 'badtoi']:
+if selected_column in ['area', 'price', 'weighted_price']:
     # Histogram for numeric columns
     plt.figure(figsize=(8, 6))
     sns.histplot(X_train_df[selected_column], kde=True)
-    plt.title(f'Distribution of {selected_column}')
+    plt.title(f'Fordeling af {selected_column}')
     plt.xlabel(selected_column)
-    plt.ylabel('Frequency')
+    plt.ylabel('Frekvens')
     st.pyplot()
 
 elif selected_column in ['build_year']:
@@ -50,16 +50,24 @@ elif selected_column in ['build_year']:
     sns.countplot(X_train_df[selected_column])
     plt.title(f'Count of properties by {selected_column}')
     plt.xlabel(selected_column)
-    plt.ylabel('Count')
+    plt.ylabel('Antal')
+    st.pyplot()
+
+elif selected_column in ['rooms', 'badtoi', 'varmesinstallation', 'vægmateriale', 'tagkode', 'Energylabel']:
+    plt.figure(figsize=(8, 6))
+    sns.countplot(X_train_df[selected_column])
+    plt.title(f'Fordeling af {selected_column}')
+    plt.xlabel(selected_column)
+    plt.ylabel('Antal')
     st.pyplot()
 
 else:
     # Barplot for other categorical columns
     plt.figure(figsize=(12, 8))
     sns.countplot(X_train_df[selected_column], order=X_train_df[selected_column].value_counts().index)
-    plt.title(f'Count of properties by {selected_column}')
+    plt.title(f'Antal af {selected_column}')
     plt.xlabel(selected_column)
-    plt.ylabel('Count')
+    plt.ylabel('Antal')
     plt.xticks(rotation=45, ha='right')
     st.pyplot()
 
