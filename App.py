@@ -20,9 +20,16 @@ nummer = st.number_input('Vælg et tilfældigt nummer mellem 0 og 19.570:', min_
 
 # Button to generate and show the plot
 if st.button('Generer forklarings plot af vurdering'):
+    if X_test_df.iloc[nummer]['ombygaar'] == 0:
+        ombyg = "der er ikke registreret nogen ombygninger"
+    else:
+        ombyg = f"der er registreret en ombygning i år {X_test_df.iloc[nummer]['ombygaar']}"
+
     st.text(f"""
     Forklaringen af vurderingen er baseret på en SHAP-waterfall plot.
             Den indtastede bolig er et {X_test_df.iloc[nummer]['anvendelse']} på {X_test_df.iloc[nummer]['area']} m2, placeret i {X_test_df.iloc[nummer]['Region']}.
+            Boligen er opført i {X_test_df.iloc[nummer]['build']} og {ombyg}. Boligens primær varmekilde er {X_test_df.iloc[nummer]['varmesinstallation']} og har en energimærkning på {X_test_df.iloc[nummer]['Energylabel']}.
+            
             HELLO!!!!
             """)
     # SHAP-waterfall plot
