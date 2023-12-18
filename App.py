@@ -21,7 +21,9 @@ st.write("Denne app har til formål illustrativt at vise hvordan en offentlig hj
 st.write("Formålet er at kunne give en letforståelig måde at forstå enkelte vurderinger.")
 
 st.subheader("Dette er modellen til vurderingerne trænet på")
-st.write("Hejsa")
+st.write("I denne sektio vil der være en række af plots, som beskriver det data, som modellen er trænet på.")
+
+
 nummer = st.number_input('Vælg et tilfældigt nummer mellem 0 og 19.570:', min_value=0, max_value=len(shap_values)-1, value=0, step=1)
 
 # Button to generate and show the plot
