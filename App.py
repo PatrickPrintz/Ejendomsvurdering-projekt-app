@@ -9,7 +9,7 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 shap_values = pd.read_csv("shap_values.csv")
 shap_values = shap_values.to_numpy()
 X_test_shh = pd.read_csv("X_test.csv")
-X_test_df = pd.read_csv("X_test_df.csv")
+X_test_df = pd.read_csv("X_test.csv")
 
 @st.cache_data
 def load_data(url):
