@@ -75,6 +75,7 @@ elif selected_column in ['varmesinstallation', 'vægmateriale', 'tagkode', 'Ener
 
 
 
+st.markdown('---')
 
 
 
@@ -83,8 +84,7 @@ elif selected_column in ['varmesinstallation', 'vægmateriale', 'tagkode', 'Ener
 
 
 
-
-st.subheader("Dette er modellen til vurderingerne trænet på")
+st.subheader("Få forklaring af individuelle vuderinger")
 st.write("""
 Denne sektion vil give et indblik i de enkelte vurderinger af rækkehuse. Vælg et tilfældigt nummer i nedenstående slider,
          Og tryk for knappen for at generere et forklarings plot af vurderingen. Bemærk at grundet OneHotEncoding er der mangle features i figuren.
