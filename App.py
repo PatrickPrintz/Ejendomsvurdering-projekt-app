@@ -86,7 +86,7 @@ st.markdown('---')
 
 st.subheader("Få forklaring af individuelle vuderinger")
 st.write("""
-Denne sektion vil give et indblik i de enkelte vurderinger af rækkehuse. Vælg et tilfældigt nummer i nedenstående slider,
+Denne sektion vil give et indblik i de enkelte vurderinger af rækkehuse. Vælg et tilfældigt nummer i nedenstående input-boks
          Og tryk for knappen for at generere et forklarings plot af vurderingen. Bemærk at grundet OneHotEncoding er der mangle features i figuren.
          Ligeledes vil der af de værdier som fremgår af plottet være benyttet skaleringsmetoder. Læs derfor i stedet teksten for rigtig fakta om enkelte bolig.
 """)
